@@ -39,8 +39,9 @@ function mergefieldconfigs() {
         merged.subtotals.push(nnconfig.subTotal || {});
         merged.functions.push({
             aggregateFuncName: nnconfig.aggregateFuncName,
-            aggregateFunc: i === 0 ? nnconfig.aggregateFunc : (nnconfig.aggregateFunc ? nnconfig.aggregateFunc() : null),
-            formatFunc: i === 0 ? nnconfig.formatFunc : (nnconfig.formatFunc ? nnconfig.formatFunc() : null)
+			aggregateFunc: (nnconfig.aggregateFunc ? nnconfig.aggregateFunc() : null),
+			formatFunc: (nnconfig.formatFunc ? nnconfig.formatFunc() : null),
+			headerFunc: (nnconfig.headerFunc ? nnconfig.headerFunc : null)
         });
     }
 
@@ -95,7 +96,9 @@ function createfield(rootconfig, axetype, fieldconfig, defaultfieldconfig) {
 
         aggregateFuncName: getpropertyvalue('aggregateFuncName', merged.functions, 'sum'),
         aggregateFunc: getpropertyvalue('aggregateFunc', merged.functions, aggregation.sum),
-        formatFunc: getpropertyvalue('formatFunc', merged.functions, null)
+        formatFunc: getpropertyvalue('formatFunc', merged.functions, null),
+		headerFunc: getpropertyvalue('headerFunc', merged.functions, false),
+
     }, false);
 }
 
@@ -145,6 +148,9 @@ var Field = module.exports.field = function(options, createSubOptions) {
 
     // shared settings
     this.caption = options.caption || this.name;
+
+	// header formatter function
+    this.headerFunc = options.headerFunc || false;
 
     // rows & columns settings
     this.sort = new SortConfig(options.sort);
