@@ -158,6 +158,7 @@ module.exports = React.createClass({
 			left: self.state.pos.x + 'px',
 			top: self.state.pos.y + 'px',
 			position: self.state.dragging ? 'fixed' : '',
+			marginTop: '2px',
 			zIndex: 101
 		};
 
@@ -173,13 +174,14 @@ module.exports = React.createClass({
 				//' \u2193' :
 				'' );
 		var filterClass = (self.state.dragging ? '' : 'fltr-btn') + (this.props.pivotTableComp.pgrid.isFieldFiltered(this.props.field.name) ? ' fltr-btn-active' : '');
+		var btnTypeClass = (self.props.field.isMeasurement ? ' measurement' : '') + (self.props.field.isDimension ? ' dimension' : '');
 		var fieldAggFunc = '';
-		if(self.props.axetype === axe.Type.DATA) {
+		if(self.props.axetype === axe.Type.DATA && !self.props.pivotTableComp.pgrid.config.hideFuncNames) {
 			fieldAggFunc = <small>{' (' + self.props.field.aggregateFuncName + ')' }</small>;
 		}
 
-		return <div key={self.props.field.name} 
-		            className={this.props.pivotTableComp.pgrid.config.theme.getButtonClasses().pivotButton}
+		return <div key={self.props.field.name}
+		            className={this.props.pivotTableComp.pgrid.config.theme.getButtonClasses().pivotButton+btnTypeClass}
 		            onMouseDown={this.onMouseDown}
 		            onMouseUp={this.onMouseUp}
 		            style={divstyle}>
@@ -187,10 +189,22 @@ module.exports = React.createClass({
 		            	<tbody>
 		            		<tr>
 		            			<td className="caption">{self.props.field.caption}{fieldAggFunc}</td>
-		            			<td><div className={'sort-indicator ' + sortDirectionClass}></div></td>
-		            			<td className="filter">
-		            				<div ref="filterButton" className={filterClass} onMouseDown={self.state.dragging ? null : this.onFilterMouseDown}></div>
-		            			</td>
+								{(() => {
+									if (self.props.field.isMeasurement) {
+										return <td></td>
+									} else {
+										return <td><div className={'sort-indicator ' + sortDirectionClass}></div></td>
+									}
+								})()}
+								{(() => {
+									if (this.props.pivotTableComp.pgrid.config.hideFilters) {
+										return <td></td>; // returning an empty string cause nesting issues since empty string renders to span which is illegal under tr tag
+									} else {
+										return <td className="filter">
+											<div ref="filterButton" className={filterClass} onMouseDown={self.state.dragging ? null : this.onFilterMouseDown}></div>
+										</td>;
+									}
+								})()}
 		            		</tr>
 		            	</tbody>
 		            </table>

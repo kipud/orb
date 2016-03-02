@@ -73,6 +73,8 @@
 			"bg": "@maincolor",
 			"bg-light": "@buttonhoverbg",
 			"bg-alpha": "@buttonhoverbg",
+			"bg-measurement": "darken(@maincolor, 20%)",
+			"bg-measurement-hover": "darken(@maincolor, 30%)",
 			"fg": "white",
 			"border": "@pivot-color-border"
 		}

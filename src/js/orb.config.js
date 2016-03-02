@@ -99,6 +99,8 @@ function createfield(rootconfig, axetype, fieldconfig, defaultfieldconfig) {
         formatFunc: getpropertyvalue('formatFunc', merged.functions, null),
 		headerFunc: getpropertyvalue('headerFunc', merged.functions, false),
 
+		isMeasurement: getpropertyvalue('isMeasurement', merged.configs, false),
+		isDimension: getpropertyvalue('isDimension', merged.configs, false)
     }, false);
 }
 
@@ -155,6 +157,10 @@ var Field = module.exports.field = function(options, createSubOptions) {
     // rows & columns settings
     this.sort = new SortConfig(options.sort);
     this.subTotal = new SubTotalConfig(options.subTotal);
+
+	// is field is defined as a measurement/dimension field then limit drag and drop
+	this.isMeasurement = options.isMeasurement || null;
+	this.isDimension = options.isDimension || null;
 
     // data settings
     var _aggregatefunc;
@@ -217,6 +223,8 @@ module.exports.config = function(config) {
     this.toolbar = config.toolbar;
     this.theme = themeManager;
     this.chartMode = new ChartConfig(config.chartMode);
+	this.hideFilters = config.hideFilters || false;
+	this.hideFuncNames = config.hideFuncNames || false;
 	this.hideRowDialog = config.hideRowDialog || false;
 
     themeManager.current(config.theme);
