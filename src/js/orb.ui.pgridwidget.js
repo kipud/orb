@@ -169,6 +169,10 @@ module.exports = function(config) {
         }
     };
 
+    this.unmount = function() {
+        ReactDOM.unmountComponentAtNode(renderElement);
+    };
+
     this.drilldown = function(dataCell, pivotId) {
         if(dataCell) {
             var colIndexes = dataCell.columnDimension.getRowIndexes();
