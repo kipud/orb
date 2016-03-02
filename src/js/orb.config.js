@@ -379,6 +379,12 @@ module.exports.config = function(config) {
         var defaultFieldConfig = getfield(self.allFields, fieldname);
 
         if (defaultFieldConfig) {
+			// move restrictions check
+			if (oldaxetype != newaxetype && defaultFieldConfig.isMeasurement && (newaxetype == axe.Type.ROWS || newaxetype == axe.Type.COLUMNS)) {
+				return false;
+			} else if (oldaxetype != newaxetype && defaultFieldConfig.isDimension && newaxetype == axe.Type.DATA) {
+				return false;
+			}
 
             switch (oldaxetype) {
                 case axe.Type.ROWS:
