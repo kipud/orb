@@ -115,7 +115,9 @@ module.exports = React.createClass({
       case 'cell-template-datavalue':
         value = (cell.datafield && cell.datafield.formatFunc) ? cell.datafield.formatFunc()(cell.value) : cell.value;
         cellClick = function() {
-          self.props.pivotTableComp.pgridwidget.drilldown(cell, self.props.pivotTableComp.id);
+          if (self.props.pivotTableComp.pgrid.config.hideRowDialog == false) {
+            self.props.pivotTableComp.pgridwidget.drilldown(cell, self.props.pivotTableComp.id);
+          }
         };
         break;
       default:

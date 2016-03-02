@@ -211,6 +211,7 @@ module.exports.config = function(config) {
     this.toolbar = config.toolbar;
     this.theme = themeManager;
     this.chartMode = new ChartConfig(config.chartMode);
+	this.hideRowDialog = config.hideRowDialog || false;
 
     themeManager.current(config.theme);
 
