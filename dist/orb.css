@@ -1,7 +1,7 @@
 /**
  * orb v1.1.0, Pivot table javascript library.
  *
- * Copyright (c) 2014-2015 Najmeddine Nouri <devnajm@gmail.com>.
+ * Copyright (c) 2014-2016 Najmeddine Nouri <devnajm@gmail.com>.
  *
  * @version v1.1.0
  * @link http://orbjs.net/
@@ -305,6 +305,7 @@
   margin: 3px 0;
   height: 10px;
   top: 0;
+  min-width: 18px;
 }
 .orb-v-scrollbar {
   position: relative;
@@ -314,6 +315,7 @@
   margin: 0 3px;
   width: 10px;
   left: 0;
+  min-height: 18px;
 }
 .orb-overlay {
   position: fixed;
@@ -632,6 +634,12 @@
   border-radius: 4px;
   padding: 4px 5px;
 }
+.orb-red .orb .fld-btn.measurement {
+  background-color: #731a2a;
+}
+.orb-red .orb .fld-btn.measurement:hover {
+  background-color: #4a101b;
+}
 .orb-red .orb .fld-btn:hover {
   background-color: #d76b7e;
   background-color: rgba(199, 44, 72, 0.7);
@@ -857,6 +865,12 @@
   border: none;
   border-radius: 4px;
   padding: 4px 5px;
+}
+.orb-blue .orb .fld-btn.measurement {
+  background-color: #2390b0;
+}
+.orb-blue .orb .fld-btn.measurement:hover {
+  background-color: #1b6d85;
 }
 .orb-blue .orb .fld-btn:hover {
   background-color: #8cd2e7;
@@ -1084,6 +1098,12 @@
   border-radius: 4px;
   padding: 4px 5px;
 }
+.orb-green .orb .fld-btn.measurement {
+  background-color: #205c0c;
+}
+.orb-green .orb .fld-btn.measurement:hover {
+  background-color: #102f06;
+}
 .orb-green .orb .fld-btn:hover {
   background-color: #78cb5d;
   background-color: rgba(63, 182, 24, 0.7);
@@ -1309,6 +1329,12 @@
   border: none;
   border-radius: 4px;
   padding: 4px 5px;
+}
+.orb-orange .orb .fld-btn.measurement {
+  background-color: #843e0f;
+}
+.orb-orange .orb .fld-btn.measurement:hover {
+  background-color: #56280a;
 }
 .orb-orange .orb .fld-btn:hover {
   background-color: #e8965e;
@@ -1536,6 +1562,12 @@
   border-radius: 4px;
   padding: 4px 5px;
 }
+.orb-flower .orb .fld-btn.measurement {
+  background-color: #6c2883;
+}
+.orb-flower .orb .fld-btn.measurement:hover {
+  background-color: #4b1c5c;
+}
 .orb-flower .orb .fld-btn:hover {
   background-color: #c180d7;
   background-color: rgba(167, 74, 199, 0.7);
@@ -1761,6 +1793,12 @@
   border: none;
   border-radius: 4px;
   padding: 4px 5px;
+}
+.orb-gray .orb .fld-btn.measurement {
+  background-color: #4d4d4d;
+}
+.orb-gray .orb .fld-btn.measurement:hover {
+  background-color: #343434;
 }
 .orb-gray .orb .fld-btn:hover {
   background-color: #a6a6a6;
@@ -1988,6 +2026,12 @@
   border-radius: 4px;
   padding: 4px 5px;
 }
+.orb-black .orb .fld-btn.measurement {
+  background-color: #000000;
+}
+.orb-black .orb .fld-btn.measurement:hover {
+  background-color: #000000;
+}
 .orb-black .orb .fld-btn:hover {
   background-color: #4c4c4c;
   background-color: rgba(0, 0, 0, 0.7);
@@ -2213,6 +2257,12 @@
   border: none;
   border-radius: 4px;
   padding: 4px 5px;
+}
+.orb-white .orb .fld-btn.measurement {
+  background-color: #cccccc;
+}
+.orb-white .orb .fld-btn.measurement:hover {
+  background-color: #b3b3b3;
 }
 .orb-white .orb .fld-btn:hover {
   background-color: #ffffff;
