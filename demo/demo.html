@@ -122,10 +122,12 @@
                         collapsible: true
                     }
                 },
+                isDimension: true
             },
             {
                 name: '3',
-                caption: 'Class'
+                caption: 'Class',
+                isDimension: true,
             },
             {
                 name: '4',
@@ -152,11 +154,11 @@
             {
                 name: '5',
                 caption: 'Quantity',
-                aggregateFunc: 'sum'
+                aggregateFunc: 'sum',
+                isMeasurement: true
             }
         ],
-        rows    : [ 'Manufacturer'],//, 'Category' ],
-        columns : [ 'Class', 'Category' ],
+        rows    : [ 'Product', 'Category' ],
         data    : [ 'Quantity', 'Amount' ],
         //hideRowDialog: true, // makes the double click on a cell NOT to show the dialog
         //hideFilters: false, // hide the filter icon next to the buttons that have the filter option
@@ -205,9 +207,9 @@
 
 
     //console.log(extractValues(croot, '', []));
-    console.log(pgridwidget.pgrid.columns.dimensionsByDepth[1].sort(function(a,b){
+    /*console.log(pgridwidget.pgrid.columns.dimensionsByDepth[1].sort(function(a,b){
         return a.field.sort.customfunc(a.value, b.value);
-    }));
+    }));*/
 
     /*
         REMOVE this pivot element from the DOM and memory but i am not sure it removes it from memory in 100%
