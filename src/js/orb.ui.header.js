@@ -155,12 +155,12 @@ module.exports.header = function(axetype, headerType, dim, parent, datafieldscou
             vspan = isRowsAxe ? datafieldscount : dim.depth - 1 || 1;
             break;
         case HeaderType.SUB_TOTAL:
-            value = dim.field.headerFunc ? dim.field.headerFunc(dim.value) :dim.value;
+            value = (dim.field && dim.value) ? (dim.field.headerFunc ? dim.field.headerFunc(dim.value) : dim.value) : dim.value;
             hspan = isRowsAxe ? dim.depth : datafieldscount;
             vspan = isRowsAxe ? datafieldscount : dim.depth;
             break;
         default:
-            value = dim.field.headerFunc ? dim.field.headerFunc(dim.value) :dim.value;
+            value = (dim.field && dim.value) ? (dim.field.headerFunc ? dim.field.headerFunc(dim.value) : dim.value) : dim.value;
             hspan = isRowsAxe ? 1 : null;
             vspan = isRowsAxe ? null : 1;
             break;
